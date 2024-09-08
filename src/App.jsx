@@ -51,7 +51,15 @@ function App() {
                   className='flex cursor-pointer bg-white p-3 justify-between text-md font-medium'
                 >
                   <h2>{QA.question}</h2>
-                  <span>{active === QA.id ? '-' : '+'}</span>
+                  <span>
+                    {enableMultiSelection
+                      ? multiple.includes(QA.id)
+                        ? '-'
+                        : '+'
+                      : active === QA.id
+                      ? '-'
+                      : '+'}
+                  </span>
                 </div>
                 {((enableMultiSelection && multiple.includes(QA.id)) ||
                   (!enableMultiSelection && active === QA.id)) && (
