@@ -5,9 +5,8 @@ import data from './data/data';
 function App() {
   const [active, setActive] = useState(null);
   function handleSingleSelect(getId) {
-    active === getId ? setActive(null) : setActive(getId);
+    setActive(active === getId ? null : getId);
   }
-  console.log(active);
 
   return (
     <div>
