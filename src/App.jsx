@@ -53,15 +53,10 @@ function App() {
                   <h2>{QA.question}</h2>
                   <span>{active === QA.id ? '-' : '+'}</span>
                 </div>
-                {enableMultiSelection ? (
-                  multiple.includes(QA.id) ? (
-                    <p className='bg-[#1db1a6] border-t p-3 pb-10'>
-                      {QA.answer}
-                    </p>
-                  ) : null
-                ) : active === QA.id ? (
+                {((enableMultiSelection && multiple.includes(QA.id)) ||
+                  (!enableMultiSelection && active === QA.id)) && (
                   <p className='bg-[#1db1a6] border-t p-3 pb-10'>{QA.answer}</p>
-                ) : null}
+                )}
               </div>
             ))
           ) : (
