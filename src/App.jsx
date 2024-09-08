@@ -28,7 +28,7 @@ function App() {
   }
 
   return (
-    <div className='bg-[#20948b] h-screen flex justify-center'>
+    <div className='bg-[#20948b] min-h-screen flex justify-center'>
       <div className='w-full max-w-[25rem] mt-[2rem] flex flex-col'>
         <button
           className='p-3 bg-white mb-12 rounded-xl w-max self-end'
@@ -53,8 +53,13 @@ function App() {
                   <h2>{QA.question}</h2>
                   <span>{active === QA.id ? '-' : '+'}</span>
                 </div>
-
-                {active === QA.id ? (
+                {enableMultiSelection ? (
+                  multiple.includes(QA.id) ? (
+                    <p className='bg-[#1db1a6] border-t p-3 pb-10'>
+                      {QA.answer}
+                    </p>
+                  ) : null
+                ) : active === QA.id ? (
                   <p className='bg-[#1db1a6] border-t p-3 pb-10'>{QA.answer}</p>
                 ) : null}
               </div>
