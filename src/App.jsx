@@ -4,8 +4,15 @@ import data from './data/data';
 
 function App() {
   const [active, setActive] = useState(null);
+  const [enableMultiSelection, setEnableMultiSelection] = useState(true);
+  const [multiple, setMultiple] = useState([]);
+
   function handleSingleSelect(getId) {
     setActive(active === getId ? null : getId);
+  }
+
+  function handleMultiSelect(getId) {
+    console.log('test' + getId);
   }
 
   return (
@@ -14,7 +21,11 @@ function App() {
         {data.map((QA) => (
           <div key={QA.id} className=' flex flex-col mb-1'>
             <div
-              onClick={() => handleSingleSelect(QA.id)}
+              onClick={
+                enableMultiSelection
+                  ? () => handleMultiSelect(QA.id)
+                  : () => handleSingleSelect(QA.id)
+              }
               className='flex cursor-pointer bg-white p-3 justify-between text-md font-medium'
             >
               <h2>{QA.question}</h2>
