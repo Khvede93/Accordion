@@ -9,13 +9,24 @@ function App() {
   }
 
   return (
-    <div>
-      {data.map((QA) => (
-        <div key={QA.id} className='w-[400px] flex flex-col gap-1'>
-          <h2 onClick={() => handleSingleSelect(QA.id)}>{QA.question}</h2>
-          {active === QA.id ? <p className='mb-[1rem]'>{QA.answer}</p> : null}
-        </div>
-      ))}
+    <div className='bg-[#20948b] h-screen flex justify-center'>
+      <div className='w-full max-w-[25rem] mt-[2rem]'>
+        {data.map((QA) => (
+          <div key={QA.id} className=' flex flex-col mb-1'>
+            <div
+              onClick={() => handleSingleSelect(QA.id)}
+              className='flex cursor-pointer bg-white p-3 justify-between text-md font-medium'
+            >
+              <h2>{QA.question}</h2>
+              <span>{active === QA.id ? '-' : '+'}</span>
+            </div>
+
+            {active === QA.id ? (
+              <p className='bg-[#1db1a6] border-t p-3 pb-10'>{QA.answer}</p>
+            ) : null}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
